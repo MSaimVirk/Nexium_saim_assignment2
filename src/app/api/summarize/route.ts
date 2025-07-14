@@ -78,8 +78,9 @@ export async function POST(req: NextRequest) {
 
     // 5. Return summaries
     return NextResponse.json({ summary_en: en, summary_ur: ur });
-  } catch (e: any) {
-    console.error(e); // <--- Add this line
-    return NextResponse.json({ error: e.message || "Internal error" }, { status: 500 });
+  } catch (e: unknown) {
+    console.error(e);
+    const errorMessage = e instanceof Error ? e.message : "Internal error";
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }

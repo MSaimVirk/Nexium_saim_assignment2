@@ -42,8 +42,12 @@ export default function Home() {
       if (!res.ok) throw new Error("Failed to summarize");
       const data = await res.json();
       setSummary({ en: data.summary_en, ur: data.summary_ur });
-    } catch (e: any) {
-      setError(e.message || "Something went wrong");
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        setError(e.message);
+      } else {
+        setError("Something went wrong");
+      }
     } finally {
       setLoading(false);
     }

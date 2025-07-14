@@ -39,8 +39,9 @@ export async function POST(req: NextRequest) {
       created_at: summary.created_at,
       raw_text: blogDoc?.text || null,
     });
-  } catch (e: any) {
-    console.error("Check-summary error:", e, JSON.stringify(e));
-    return NextResponse.json({ error: e?.message || JSON.stringify(e) || "Internal error" }, { status: 500 });
+  } catch (e: unknown) {
+    const error = e instanceof Error ? e : new Error(String(e));
+    console.error("Check-summary error:", error, JSON.stringify(error));
+    return NextResponse.json({ error: error.message || JSON.stringify(error) || "Internal error" }, { status: 500 });
   }
 }
