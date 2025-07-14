@@ -7,4 +7,4 @@ export function Header() {
       {/* Add nav links here if needed */}
     </header>
   );
-} 
+}

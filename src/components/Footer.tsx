@@ -6,4 +6,4 @@ export function Footer() {
       © {new Date().getFullYear()} Blog Summarizer. Powered by Next.js & shadcn/ui.
     </footer>
   );
-} 
+}

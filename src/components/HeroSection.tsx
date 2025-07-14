@@ -22,4 +22,4 @@ export function HeroSection({ onGetStarted, showButton = true }: HeroSectionProp
       )}
     </section>
   );
-} 
+}
