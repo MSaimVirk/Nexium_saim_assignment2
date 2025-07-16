@@ -17,7 +17,7 @@ async function fetchBlogText(url: string): Promise<string> {
   const html = await res.text();
   // Naive extraction: strip tags, get body text
   const body = html.match(/<body[\s\S]*?>([\s\S]*?)<\/body>/i)?.[1] || html;
-  return body.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+  return body.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();           ////////////////////////////////
 }
 
 async function summarizeWithGroq(text: string): Promise<{ en: string; ur: string }> {
